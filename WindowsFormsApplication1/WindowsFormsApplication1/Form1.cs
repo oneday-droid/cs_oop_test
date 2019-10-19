@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, ViewState
     {
         Presenter presenter;
 
@@ -20,7 +20,9 @@ namespace WindowsFormsApplication1
             languageComboBox.DataSource = new BindingSource(Presenter.AvailableLanguage(), null);
             languageComboBox.DisplayMember = "Key";
             languageComboBox.ValueMember = "Value";
+
             presenter = new Presenter();
+            presenter.attachView(this);
         }
 
         private void inputTextBox_KeyPress(object sender, KeyEventArgs e)
@@ -28,9 +30,8 @@ namespace WindowsFormsApplication1
             if (e.KeyCode == Keys.Enter)
             {
                 string inputText = inputTextBox.Text;
-                conversationTextBox.AppendText(">> " + inputText + "\n");
-                string text = presenter.NewMessageToPerson(inputText);
-                conversationTextBox.AppendText("<< " + text + "\n");
+                UserMessage(inputText);
+                presenter.NewMessageToPerson(inputText);
             }
         }
 
@@ -47,8 +48,30 @@ namespace WindowsFormsApplication1
                 age = 0;
             }
 
-            string text = presenter.AddPerson(name, age, languageComboBox.SelectedIndex);
-            conversationTextBox.AppendText(text + "\n");
+            presenter.AddPerson(name, age, languageComboBox.SelectedIndex);
+        }
+
+        public void InformMessage(string message)
+        {
+            conversationTextBox.AppendText(message + "\n");
+        }
+
+        public void PersonMessage(string message)
+        {
+            conversationTextBox.SelectionStart = conversationTextBox.Text.Length;
+            string text = ">> " + message + "\n";
+            conversationTextBox.SelectionLength = text.Length;
+            conversationTextBox.SelectionColor = Color.DarkBlue;
+            conversationTextBox.AppendText(text);            
+        }
+
+        public void UserMessage(string message)
+        {
+            conversationTextBox.SelectionStart = conversationTextBox.Text.Length;
+            string text = "<< " + message + "\n";
+            conversationTextBox.SelectionLength = text.Length;
+            conversationTextBox.SelectionColor = Color.DarkCyan; 
+            conversationTextBox.AppendText(text);                       
         }
     }
 }

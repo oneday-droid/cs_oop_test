@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public string Talk(string phrase)
+        public string Talk(string phrase = "")
         {
             string answer = "";
             if (phrase == "")
