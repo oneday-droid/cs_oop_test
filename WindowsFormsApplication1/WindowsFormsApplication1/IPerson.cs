@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    interface IPerson
+    interface ISpeaker
     {
         string SayHi();
         string AskSmth(string question);

@@ -8,7 +8,7 @@ namespace WindowsFormsApplication1
 {
     class Presenter
     {
-        AbstractPerson person;
+        Person person;
         Random random;
         string[,] nameVariant; 
 
@@ -21,20 +21,30 @@ namespace WindowsFormsApplication1
         public string AddPerson()
         {
             GeneratePerson();
-            return "You add person to conversation";
+            return "You add person to conversation\n>> " + person.Talk("");
         }
 
         public string NewMessageToPerson(string phrase)
         {
-            return person.Talk(phrase);
+            string answer;
+            try
+            {
+                answer = person.Talk(phrase);
+            }
+            catch (NullReferenceException)
+            {
+                answer = "No person in conversation";
+            }                
+                
+            return answer;
         }
 
         void GeneratePerson()
         {
             uint age = (uint)random.Next(7, 90);
-            AbstractPerson.LanguageType type = (AbstractPerson.LanguageType)(random.Next(0, 100)%2);
+            Person.LanguageType type = (Person.LanguageType)(random.Next(0, 100) % 2);
             string name = nameVariant[(int)type, random.Next(0, 4)];
-            person = new AbstractPerson(name, age, type);
+            person = new Person(name, age, type);
         }
     }
 }
