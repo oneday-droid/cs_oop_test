@@ -17,6 +17,9 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+            languageComboBox.DataSource = new BindingSource(Presenter.AvailableLanguage(), null);
+            languageComboBox.DisplayMember = "Key";
+            languageComboBox.ValueMember = "Value";
             presenter = new Presenter();
         }
 
@@ -33,7 +36,18 @@ namespace WindowsFormsApplication1
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            string text = presenter.AddPerson();
+            string name = nameTextBox.Text;
+            uint age = 0;
+            try
+            {
+                age = Convert.ToUInt32(ageTextBox.Text);
+            }
+            catch (Exception)
+            {
+                age = 0;
+            }
+
+            string text = presenter.AddPerson(name, age, languageComboBox.SelectedIndex);
             conversationTextBox.AppendText(text + "\n");
         }
     }

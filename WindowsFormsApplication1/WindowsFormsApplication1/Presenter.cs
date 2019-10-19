@@ -12,15 +12,28 @@ namespace WindowsFormsApplication1
         Random random;
         string[,] nameVariant; 
 
+        public static Dictionary<string, Person.LanguageType> AvailableLanguage()
+        {
+            Dictionary<string, Person.LanguageType> languages = new Dictionary<string, Person.LanguageType>();
+            languages.Add("Russian", Person.LanguageType.Russian);
+            languages.Add("English", Person.LanguageType.English);
+
+            return languages;
+        }
+
         public Presenter()
         {
             random = new Random();
             nameVariant = new string [2,5] {{"Саша", "Маша", "Петя", "Таня", "Марина"}, {"John", "Jane", "Mike", "Jake", "Sarah"}};
         }
 
-        public string AddPerson()
+        public string AddPerson(string name, uint age, int language)
         {
-            GeneratePerson();
+            if ((name != "") && (age > 0))
+                person = new Person(name, age, (Person.LanguageType)language);
+            else
+                GeneratePerson();
+
             return "You add person to conversation\n>> " + person.Talk("");
         }
 

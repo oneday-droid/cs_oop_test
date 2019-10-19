@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
 
         public uint Age
         {
-            private set { m_age = value; }
+            private set { m_age = (value > 7) ? value : 7; }
             get { return m_age; }
         }
 
