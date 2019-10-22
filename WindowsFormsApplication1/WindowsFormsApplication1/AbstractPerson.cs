@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    class AbstractPerson 
+    class Person 
     {
         public enum LanguageType
         {
@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
 
         string m_name;
         uint m_age;
-        IPerson m_language;
+        ISpeaker m_language;
 
         public string Name
         {
@@ -26,23 +26,23 @@ namespace WindowsFormsApplication1
 
         public uint Age
         {
-            private set { m_age = value; }
+            private set { m_age = (value > 7) ? value : 7; }
             get { return m_age; }
         }
 
-        public AbstractPerson(string name, uint age, LanguageType type)
+        public Person(string name, uint age, LanguageType type)
         {
             Name = name;
             Age = age;
 
             switch (type)
             {
-                case LanguageType.English: m_language = new EnglishPersonImpl(this); break;
-                case LanguageType.Russian: m_language = new RussianPersonImpl(this); break;
+                case LanguageType.English: m_language = new EnglishSpeakerImpl(this); break;
+                case LanguageType.Russian: m_language = new RussianSpeakerImpl(this); break;
             }
         }
 
-        public string Talk(string phrase)
+        public string Talk(string phrase = "")
         {
             string answer = "";
             if (phrase == "")

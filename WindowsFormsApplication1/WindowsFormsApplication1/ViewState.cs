@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    interface ISpeaker
+    interface ViewState
     {
-        string SayHi();
-        string AskSmth(string question);
+        void InformMessage(string message);
+        void PersonMessage(string message);
+        void UserMessage(string message);        
     }
 }

@@ -8,33 +8,61 @@ namespace WindowsFormsApplication1
 {
     class Presenter
     {
-        AbstractPerson person;
+        Person person;
+        ViewState view;
         Random random;
         string[,] nameVariant; 
+
+        public static Dictionary<string, Person.LanguageType> AvailableLanguage()
+        {
+            Dictionary<string, Person.LanguageType> languages = new Dictionary<string, Person.LanguageType>();
+            languages.Add("Russian", Person.LanguageType.Russian);
+            languages.Add("English", Person.LanguageType.English);
+
+            return languages;
+        }
+
+        public void attachView(ViewState view)
+        {
+            this.view = view;
+        }
 
         public Presenter()
         {
             random = new Random();
-            nameVariant = new string [2,5] {{"Саша", "Маша", "Петя", "Таня", "Марина"}, {"John", "Jane", "Mike", "Jake", "Sarah"}};
+            nameVariant = new string [2,5] {{"Саша", "Маша", "Петя", "Таня", "Марина"}, 
+                                            {"John", "Jane", "Mike", "Jake", "Sarah"}};
         }
 
-        public string AddPerson()
+        public void AddPerson(string name, uint age, int language)
         {
-            GeneratePerson();
-            return "You add person to conversation";
+            Person.LanguageType type = (Person.LanguageType)language;
+            if ((name == "") || (age <= 0))
+                GeneratePerson(out name, out age, out type);
+
+            person = new Person(name, age, type);
+
+            view.InformMessage("You add person to conversation");
+            view.PersonMessage(person.Talk());
         }
 
-        public string NewMessageToPerson(string phrase)
+        public void NewMessageToPerson(string phrase)
         {
-            return person.Talk(phrase);
+            try
+            {
+                view.PersonMessage(person.Talk(phrase));
+            }
+            catch (NullReferenceException)
+            {
+                view.InformMessage("No person in conversation");
+            }
         }
 
-        void GeneratePerson()
+        void GeneratePerson(out string name, out uint age, out Person.LanguageType type)
         {
-            uint age = (uint)random.Next(7, 90);
-            AbstractPerson.LanguageType type = (AbstractPerson.LanguageType)(random.Next(0, 100)%2);
-            string name = nameVariant[(int)type, random.Next(0, 4)];
-            person = new AbstractPerson(name, age, type);
+            age = (uint)random.Next(7, 90);
+            type = (Person.LanguageType)(random.Next(0, 100) % 2);
+            name = nameVariant[(int)type, random.Next(0, 4)];
         }
     }
 }

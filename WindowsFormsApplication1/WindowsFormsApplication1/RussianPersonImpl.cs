@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    class RussianPersonImpl : IPerson
+    class RussianSpeakerImpl : ISpeaker
     {
-        AbstractPerson m_person;
+        Person m_person;
 
-        public RussianPersonImpl(AbstractPerson person)
+        public RussianSpeakerImpl(Person person)
         {
             m_person = person;
         }
@@ -25,6 +25,8 @@ namespace WindowsFormsApplication1
             string answer = "";
             if (System.Text.RegularExpressions.Regex.IsMatch(question, "[a-zA-Z]"))
                 answer = "Я Вас не понимаю";
+            else if (question == "Привет")
+                answer = SayHi();
             else if (question == "Как тебя зовут?")
                 answer = String.Format("Меня зовут {0}", m_person.Name);
             else if (question == "Сколько тебе лет?")
