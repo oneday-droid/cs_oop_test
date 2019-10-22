@@ -16,5 +16,10 @@ namespace TriangleApplication
         {
             InitializeComponent();
         }
+
+        private void setButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
