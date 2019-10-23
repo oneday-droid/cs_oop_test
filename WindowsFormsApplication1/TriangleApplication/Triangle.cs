@@ -39,7 +39,15 @@ namespace TriangleApplication
 
         static public bool IsValueCorrect(double a, double b, double c)
         {
-            return true;
+            bool result = (a + b) > c;
+            if (result)
+            {
+                result = (a + c) > b;
+                if (result)
+                    result = (b + c) > a;
+            }
+
+            return result;
         }
 
         static public double Area(double a, double b, double c)
@@ -62,9 +70,9 @@ namespace TriangleApplication
 
         public static Triangle operator--(Triangle obj)
         {
-            double a = obj.A + 1;
-            double b = obj.B + 1; ;
-            double c = obj.C + 1; ;
+            double a = obj.A - 1;
+            double b = obj.B - 1; ;
+            double c = obj.C - 1; ;
             return new Triangle(a, b, c);
         }
 

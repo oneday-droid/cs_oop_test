@@ -29,19 +29,29 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.setButton = new System.Windows.Forms.Button();
+            this.cTextBox = new System.Windows.Forms.TextBox();
+            this.bTextBox = new System.Windows.Forms.TextBox();
             this.aTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.bTextBox = new System.Windows.Forms.TextBox();
-            this.cTextBox = new System.Windows.Forms.TextBox();
-            this.setButton = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.RichTextBox();
+            this.getAreaButton = new System.Windows.Forms.Button();
+            this.getCountButton = new System.Windows.Forms.Button();
+            this.staticGetAreaButton = new System.Windows.Forms.Button();
+            this.incrementCheckBox = new System.Windows.Forms.CheckBox();
+            this.decrementCheckBox = new System.Windows.Forms.CheckBox();
+            this.castToDoubleCheckBox = new System.Windows.Forms.CheckBox();
+            this.castToBoolCheckBox = new System.Windows.Forms.CheckBox();
+            this.showButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.staticGetAreaButton);
+            this.groupBox1.Controls.Add(this.getAreaButton);
             this.groupBox1.Controls.Add(this.setButton);
             this.groupBox1.Controls.Add(this.cTextBox);
             this.groupBox1.Controls.Add(this.bTextBox);
@@ -51,10 +61,34 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(294, 99);
+            this.groupBox1.Size = new System.Drawing.Size(285, 115);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Triangle";
+            // 
+            // setButton
+            // 
+            this.setButton.Location = new System.Drawing.Point(10, 60);
+            this.setButton.Name = "setButton";
+            this.setButton.Size = new System.Drawing.Size(75, 35);
+            this.setButton.TabIndex = 6;
+            this.setButton.Text = "Add triangle";
+            this.setButton.UseVisualStyleBackColor = true;
+            this.setButton.Click += new System.EventHandler(this.setButton_Click);
+            // 
+            // cTextBox
+            // 
+            this.cTextBox.Location = new System.Drawing.Point(211, 23);
+            this.cTextBox.Name = "cTextBox";
+            this.cTextBox.Size = new System.Drawing.Size(59, 20);
+            this.cTextBox.TabIndex = 5;
+            // 
+            // bTextBox
+            // 
+            this.bTextBox.Location = new System.Drawing.Point(119, 20);
+            this.bTextBox.Name = "bTextBox";
+            this.bTextBox.Size = new System.Drawing.Size(59, 20);
+            this.bTextBox.TabIndex = 4;
             // 
             // aTextBox
             // 
@@ -66,7 +100,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(205, 20);
+            this.label3.Location = new System.Drawing.Point(192, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 13);
             this.label3.TabIndex = 2;
@@ -75,7 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(103, 20);
+            this.label2.Location = new System.Drawing.Point(100, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 1;
@@ -90,44 +124,106 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "a";
             // 
-            // bTextBox
-            // 
-            this.bTextBox.Location = new System.Drawing.Point(122, 17);
-            this.bTextBox.Name = "bTextBox";
-            this.bTextBox.Size = new System.Drawing.Size(59, 20);
-            this.bTextBox.TabIndex = 4;
-            // 
-            // cTextBox
-            // 
-            this.cTextBox.Location = new System.Drawing.Point(224, 17);
-            this.cTextBox.Name = "cTextBox";
-            this.cTextBox.Size = new System.Drawing.Size(59, 20);
-            this.cTextBox.TabIndex = 5;
-            // 
-            // setButton
-            // 
-            this.setButton.Location = new System.Drawing.Point(208, 58);
-            this.setButton.Name = "setButton";
-            this.setButton.Size = new System.Drawing.Size(75, 23);
-            this.setButton.TabIndex = 6;
-            this.setButton.Text = "Set values";
-            this.setButton.UseVisualStyleBackColor = true;
-            this.setButton.Click += new System.EventHandler(this.setButton_Click);
-            // 
             // outputTextBox
             // 
-            this.outputTextBox.Location = new System.Drawing.Point(13, 131);
+            this.outputTextBox.Location = new System.Drawing.Point(12, 307);
             this.outputTextBox.Name = "outputTextBox";
             this.outputTextBox.ReadOnly = true;
-            this.outputTextBox.Size = new System.Drawing.Size(294, 182);
+            this.outputTextBox.Size = new System.Drawing.Size(286, 182);
             this.outputTextBox.TabIndex = 1;
             this.outputTextBox.Text = "";
+            // 
+            // getAreaButton
+            // 
+            this.getAreaButton.Location = new System.Drawing.Point(103, 60);
+            this.getAreaButton.Name = "getAreaButton";
+            this.getAreaButton.Size = new System.Drawing.Size(75, 35);
+            this.getAreaButton.TabIndex = 7;
+            this.getAreaButton.Text = "Get area";
+            this.getAreaButton.UseVisualStyleBackColor = true;
+            this.getAreaButton.Click += new System.EventHandler(this.getAreaButton_Click);
+            // 
+            // getCountButton
+            // 
+            this.getCountButton.Location = new System.Drawing.Point(12, 145);
+            this.getCountButton.Name = "getCountButton";
+            this.getCountButton.Size = new System.Drawing.Size(286, 35);
+            this.getCountButton.TabIndex = 8;
+            this.getCountButton.Text = "Get object count";
+            this.getCountButton.UseVisualStyleBackColor = true;
+            this.getCountButton.Click += new System.EventHandler(this.getCountButton_Click);
+            // 
+            // staticGetAreaButton
+            // 
+            this.staticGetAreaButton.Location = new System.Drawing.Point(195, 60);
+            this.staticGetAreaButton.Name = "staticGetAreaButton";
+            this.staticGetAreaButton.Size = new System.Drawing.Size(75, 35);
+            this.staticGetAreaButton.TabIndex = 7;
+            this.staticGetAreaButton.Text = "Get area by values";
+            this.staticGetAreaButton.UseVisualStyleBackColor = true;
+            this.staticGetAreaButton.Click += new System.EventHandler(this.staticGetAreaButton_Click);
+            // 
+            // incrementCheckBox
+            // 
+            this.incrementCheckBox.AutoSize = true;
+            this.incrementCheckBox.Location = new System.Drawing.Point(18, 200);
+            this.incrementCheckBox.Name = "incrementCheckBox";
+            this.incrementCheckBox.Size = new System.Drawing.Size(137, 17);
+            this.incrementCheckBox.TabIndex = 9;
+            this.incrementCheckBox.Text = "show increment triangle";
+            this.incrementCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // decrementCheckBox
+            // 
+            this.decrementCheckBox.AutoSize = true;
+            this.decrementCheckBox.Location = new System.Drawing.Point(18, 232);
+            this.decrementCheckBox.Name = "decrementCheckBox";
+            this.decrementCheckBox.Size = new System.Drawing.Size(141, 17);
+            this.decrementCheckBox.TabIndex = 9;
+            this.decrementCheckBox.Text = "show decrement triangle";
+            this.decrementCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // castToDoubleCheckBox
+            // 
+            this.castToDoubleCheckBox.AutoSize = true;
+            this.castToDoubleCheckBox.Location = new System.Drawing.Point(161, 200);
+            this.castToDoubleCheckBox.Name = "castToDoubleCheckBox";
+            this.castToDoubleCheckBox.Size = new System.Drawing.Size(107, 17);
+            this.castToDoubleCheckBox.TabIndex = 9;
+            this.castToDoubleCheckBox.Text = "triangle -> double";
+            this.castToDoubleCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // castToBoolCheckBox
+            // 
+            this.castToBoolCheckBox.AutoSize = true;
+            this.castToBoolCheckBox.Location = new System.Drawing.Point(161, 232);
+            this.castToBoolCheckBox.Name = "castToBoolCheckBox";
+            this.castToBoolCheckBox.Size = new System.Drawing.Size(95, 17);
+            this.castToBoolCheckBox.TabIndex = 9;
+            this.castToBoolCheckBox.Text = "triangle -> bool";
+            this.castToBoolCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showButton
+            // 
+            this.showButton.Location = new System.Drawing.Point(12, 255);
+            this.showButton.Name = "showButton";
+            this.showButton.Size = new System.Drawing.Size(286, 34);
+            this.showButton.TabIndex = 10;
+            this.showButton.Text = "Show operation";
+            this.showButton.UseVisualStyleBackColor = true;
+            this.showButton.Click += new System.EventHandler(this.showButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 325);
+            this.ClientSize = new System.Drawing.Size(328, 524);
+            this.Controls.Add(this.showButton);
+            this.Controls.Add(this.castToBoolCheckBox);
+            this.Controls.Add(this.castToDoubleCheckBox);
+            this.Controls.Add(this.decrementCheckBox);
+            this.Controls.Add(this.incrementCheckBox);
+            this.Controls.Add(this.getCountButton);
             this.Controls.Add(this.outputTextBox);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -135,6 +231,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,6 +246,14 @@
         private System.Windows.Forms.TextBox cTextBox;
         private System.Windows.Forms.TextBox bTextBox;
         private System.Windows.Forms.RichTextBox outputTextBox;
+        private System.Windows.Forms.Button getCountButton;
+        private System.Windows.Forms.Button getAreaButton;
+        private System.Windows.Forms.Button staticGetAreaButton;
+        private System.Windows.Forms.CheckBox incrementCheckBox;
+        private System.Windows.Forms.CheckBox decrementCheckBox;
+        private System.Windows.Forms.CheckBox castToDoubleCheckBox;
+        private System.Windows.Forms.CheckBox castToBoolCheckBox;
+        private System.Windows.Forms.Button showButton;
     }
 }
 
