@@ -48,12 +48,13 @@ namespace TriangleApplication
 
         public void GetArea()
         {
-            try
+            if (triangle != null)
             {
                 double area = triangle.Area();
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) area is {3}", triangle.A, triangle.B, triangle.C, area));
+                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) area is {3}", 
+                                   triangle.A, triangle.B, triangle.C, area));
             }
-            catch (NullReferenceException)
+            else
             {
                 m_view.ShowMessage("Triangle not create yet. Press Add triangle before Get area or use Static get area");
             }
@@ -66,12 +67,12 @@ namespace TriangleApplication
 
         public void IncrementTriangle()
         {
-            try
+            if (triangle != null)
             {
                 triangle++;
                 m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2})", triangle.A, triangle.B, triangle.C));
             }
-            catch (NullReferenceException)
+            else
             {
                 m_view.ShowMessage("Triangle not create yet. Press Add triangle at first");
             }
@@ -81,28 +82,29 @@ namespace TriangleApplication
         {
             try
             {
-                triangle--;
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2})", triangle.A, triangle.B, triangle.C));
-            }
-            catch (NullReferenceException)
-            {
-                m_view.ShowMessage("Triangle not create yet. Press Add triangle at first");
+                if (triangle != null)
+                {
+                    triangle--;
+                    m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2})", triangle.A, triangle.B, triangle.C));
+                }
+                else
+                    m_view.ShowMessage("Triangle not create yet. Press Add triangle at first");                    
             }
             catch (Exception e)
             {
                 m_view.ShowMessage(e.Message);
             }
-
         }
 
         public void CastTriangleToDouble()
         {
-            try
+            if (triangle != null)
             {
                 double value = (double)triangle;
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) to double is {3}", triangle.A, triangle.B, triangle.C, value));
+                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) to double is {3}", 
+                                   triangle.A, triangle.B, triangle.C, value));
             }
-            catch (NullReferenceException)
+            else
             {
                 m_view.ShowMessage("Triangle not create yet. Press Add triangle before Get area or use Static get area");
             }
@@ -110,12 +112,13 @@ namespace TriangleApplication
 
         public void CastTriangleToBool()
         {
-            try
+            if (triangle != null)
             {
                 bool value = triangle;
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) to bool is {3}", triangle.A, triangle.B, triangle.C, value));
+                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) to bool is {3}", 
+                                   triangle.A, triangle.B, triangle.C, value));
             }
-            catch (NullReferenceException)
+            else
             {
                 m_view.ShowMessage("Triangle not create yet. Press Add triangle before Get area or use Static get area");
             }

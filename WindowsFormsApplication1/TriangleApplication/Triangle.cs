@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace TriangleApplication
 {
+    class TriangleException : Exception
+    {
+        public TriangleException() : base(String.Format("Can't create triangle:")) { }
+
+        public TriangleException(double a, double b, double c)
+        : base(String.Format("Can't create triangle: ({0},{1},{2})", a,b,c))
+        { }
+    }
+
     class Triangle
     {
         double m_a;
@@ -14,19 +23,19 @@ namespace TriangleApplication
 
         public double A
         {
-            set { if (value > 0) m_a = value; }
+            private set { if (value > 0) m_a = value; }
             get { return m_a; }
         }
 
         public double B
         {
-            set { if (value > 0) m_b = value; }
+            private set { if (value > 0) m_b = value; }
             get { return m_b; }
         }
 
         public double C
         {
-            set { if (value > 0) m_c = value; }
+            private set { if (value > 0) m_c = value; }
             get { return m_c; }
         }
 
@@ -57,22 +66,22 @@ namespace TriangleApplication
                 return CalculateArea(a, b, c);
             }
             else
-                throw new ArgumentException("This value is not triangle");
+                throw new TriangleException(a,b,c);
         }
 
         public static Triangle operator++(Triangle obj)
         {
             double a = obj.A + 1;
-            double b = obj.B + 1; ;
-            double c = obj.C + 1; ; 
+            double b = obj.B + 1; 
+            double c = obj.C + 1;  
             return new Triangle(a, b, c);
         }
 
         public static Triangle operator--(Triangle obj)
         {
             double a = obj.A - 1;
-            double b = obj.B - 1; ;
-            double c = obj.C - 1; ;
+            double b = obj.B - 1; 
+            double c = obj.C - 1; 
             return new Triangle(a, b, c);
         }
 
@@ -111,7 +120,7 @@ namespace TriangleApplication
                 count++;
             }
             else
-                throw new ArgumentException("This value is not triangle");
+                throw new TriangleException(a, b, c); ;
         }
 
         public double Area()

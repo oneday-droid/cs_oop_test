@@ -26,13 +26,28 @@ namespace TriangleApplication
             outputTextBox.AppendText(message + "\n");
         }
 
+        private void GetValuesFromTextBox(out double a, out double b, out double c)
+        {
+            a = -1; b = -1; c = -1;
+            try
+            {
+                a = Convert.ToDouble(aTextBox.Text);
+                b = Convert.ToDouble(bTextBox.Text);
+                c = Convert.ToDouble(cTextBox.Text);
+            }
+            catch (Exception)
+            {
+                outputTextBox.AppendText("Incorrect values\n");
+            }
+        }
+
         private void setButton_Click(object sender, EventArgs e)
         {
-            double a = Convert.ToDouble(aTextBox.Text);
-            double b = Convert.ToDouble(bTextBox.Text);
-            double c = Convert.ToDouble(cTextBox.Text);
-
-            presenter.AddTriangle(a, b, c);
+            double a;
+            double b;
+            double c;
+            GetValuesFromTextBox(out a, out b, out c);
+            presenter.AddTriangle(a, b, c);            
         }
 
         private void getAreaButton_Click(object sender, EventArgs e)
@@ -42,10 +57,11 @@ namespace TriangleApplication
 
         private void staticGetAreaButton_Click(object sender, EventArgs e)
         {
-            double a = Convert.ToDouble(aTextBox.Text);
-            double b = Convert.ToDouble(bTextBox.Text);
-            double c = Convert.ToDouble(cTextBox.Text);
-            presenter.GetAreaStatic(a, b, c);
+            double a;
+            double b;
+            double c;
+            GetValuesFromTextBox(out a, out b, out c);
+            presenter.GetAreaStatic(a, b, c);            
         }
 
         private void getCountButton_Click(object sender, EventArgs e)
@@ -63,6 +79,6 @@ namespace TriangleApplication
                 presenter.CastTriangleToDouble();
             if (castToBoolCheckBox.Checked)
                 presenter.CastTriangleToBool();
-        }
+        }        
     }
 }

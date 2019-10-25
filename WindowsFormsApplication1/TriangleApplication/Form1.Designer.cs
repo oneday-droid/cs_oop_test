@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.staticGetAreaButton = new System.Windows.Forms.Button();
+            this.getAreaButton = new System.Windows.Forms.Button();
             this.setButton = new System.Windows.Forms.Button();
             this.cTextBox = new System.Windows.Forms.TextBox();
             this.bTextBox = new System.Windows.Forms.TextBox();
@@ -37,9 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.outputTextBox = new System.Windows.Forms.RichTextBox();
-            this.getAreaButton = new System.Windows.Forms.Button();
             this.getCountButton = new System.Windows.Forms.Button();
-            this.staticGetAreaButton = new System.Windows.Forms.Button();
             this.incrementCheckBox = new System.Windows.Forms.CheckBox();
             this.decrementCheckBox = new System.Windows.Forms.CheckBox();
             this.castToDoubleCheckBox = new System.Windows.Forms.CheckBox();
@@ -66,6 +66,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Triangle";
             // 
+            // staticGetAreaButton
+            // 
+            this.staticGetAreaButton.Location = new System.Drawing.Point(195, 60);
+            this.staticGetAreaButton.Name = "staticGetAreaButton";
+            this.staticGetAreaButton.Size = new System.Drawing.Size(75, 35);
+            this.staticGetAreaButton.TabIndex = 7;
+            this.staticGetAreaButton.Text = "Get area by values";
+            this.staticGetAreaButton.UseVisualStyleBackColor = true;
+            this.staticGetAreaButton.Click += new System.EventHandler(this.staticGetAreaButton_Click);
+            // 
+            // getAreaButton
+            // 
+            this.getAreaButton.Location = new System.Drawing.Point(103, 60);
+            this.getAreaButton.Name = "getAreaButton";
+            this.getAreaButton.Size = new System.Drawing.Size(75, 35);
+            this.getAreaButton.TabIndex = 7;
+            this.getAreaButton.Text = "Get area";
+            this.getAreaButton.UseVisualStyleBackColor = true;
+            this.getAreaButton.Click += new System.EventHandler(this.getAreaButton_Click);
+            // 
             // setButton
             // 
             this.setButton.Location = new System.Drawing.Point(10, 60);
@@ -85,14 +105,14 @@
             // 
             // bTextBox
             // 
-            this.bTextBox.Location = new System.Drawing.Point(119, 20);
+            this.bTextBox.Location = new System.Drawing.Point(119, 23);
             this.bTextBox.Name = "bTextBox";
             this.bTextBox.Size = new System.Drawing.Size(59, 20);
             this.bTextBox.TabIndex = 4;
             // 
             // aTextBox
             // 
-            this.aTextBox.Location = new System.Drawing.Point(26, 17);
+            this.aTextBox.Location = new System.Drawing.Point(26, 23);
             this.aTextBox.Name = "aTextBox";
             this.aTextBox.Size = new System.Drawing.Size(59, 20);
             this.aTextBox.TabIndex = 3;
@@ -109,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 23);
+            this.label2.Location = new System.Drawing.Point(100, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 1;
@@ -118,7 +138,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Location = new System.Drawing.Point(7, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 0;
@@ -133,16 +153,6 @@
             this.outputTextBox.TabIndex = 1;
             this.outputTextBox.Text = "";
             // 
-            // getAreaButton
-            // 
-            this.getAreaButton.Location = new System.Drawing.Point(103, 60);
-            this.getAreaButton.Name = "getAreaButton";
-            this.getAreaButton.Size = new System.Drawing.Size(75, 35);
-            this.getAreaButton.TabIndex = 7;
-            this.getAreaButton.Text = "Get area";
-            this.getAreaButton.UseVisualStyleBackColor = true;
-            this.getAreaButton.Click += new System.EventHandler(this.getAreaButton_Click);
-            // 
             // getCountButton
             // 
             this.getCountButton.Location = new System.Drawing.Point(12, 145);
@@ -152,16 +162,6 @@
             this.getCountButton.Text = "Get object count";
             this.getCountButton.UseVisualStyleBackColor = true;
             this.getCountButton.Click += new System.EventHandler(this.getCountButton_Click);
-            // 
-            // staticGetAreaButton
-            // 
-            this.staticGetAreaButton.Location = new System.Drawing.Point(195, 60);
-            this.staticGetAreaButton.Name = "staticGetAreaButton";
-            this.staticGetAreaButton.Size = new System.Drawing.Size(75, 35);
-            this.staticGetAreaButton.TabIndex = 7;
-            this.staticGetAreaButton.Text = "Get area by values";
-            this.staticGetAreaButton.UseVisualStyleBackColor = true;
-            this.staticGetAreaButton.Click += new System.EventHandler(this.staticGetAreaButton_Click);
             // 
             // incrementCheckBox
             // 
