@@ -120,7 +120,7 @@ namespace TriangleApplication
                 count++;
             }
             else
-                throw new TriangleException(a, b, c); ;
+                throw new TriangleException(a, b, c);
         }
 
         public double Area()

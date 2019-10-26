@@ -12,5 +12,8 @@ namespace TriangleApplication
         void Clear();
         IRepository<T> GetAll();
         T Get(int index);
+        T Last();
+        T First();
+        void Replace(int index, T newValue);
     }
 }

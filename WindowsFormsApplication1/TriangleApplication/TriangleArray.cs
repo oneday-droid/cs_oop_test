@@ -20,7 +20,13 @@ namespace TriangleApplication
 
         public Triangle this[int index]
         {
-            get { return triArray[index]; }
+            get 
+            {
+                if ((index > 0) && (index < Size))
+                    return triArray[index]; 
+                else
+                    throw new IndexOutOfRangeException();
+            }
             set { triArray[index] = value; }
         }
 
@@ -65,24 +71,48 @@ namespace TriangleApplication
             return str;
         }
 
-        void IRepository<Triangle>.Add(Triangle value)
+        public void Add(Triangle value)
         {
-            ;
+            Triangle[] tempArray = triArray;
+            Size = Size + 1;
+            triArray = new Triangle[Size];
+            for (int k = 0; k < Size - 1; k++)
+                triArray[k] = tempArray[k];
+
+            triArray[Size - 1] = value;
         }
 
-        void IRepository<Triangle>.Clear()
+        public void Clear()
         {
             Size = 0;
         }
 
-        IRepository<Triangle> IRepository<Triangle>.GetAll()
+        public IRepository<Triangle> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        Triangle IRepository<Triangle>.Get(int index)
+        public Triangle Get(int index)
         {
-            return this[index];
+            return triArray[index];
+        }
+
+        public Triangle First()
+        {
+            return triArray[0];
+        }
+
+        public Triangle Last()
+        {
+            return triArray[Size - 1];
+        }
+
+        public void Replace(int index, Triangle newValue)
+        {
+            if ((index > 0) && (index < Size))
+                triArray[index] = newValue;
+            else
+                throw new IndexOutOfRangeException();
         }
     }
 }

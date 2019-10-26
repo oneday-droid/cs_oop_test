@@ -9,11 +9,11 @@ namespace TriangleApplication
     class Presenter
     {
         IView m_view;
-        Triangle triangle;
+        TriangleRepository triangles;
 
         public Presenter()
         {
-
+            triangles = new TriangleRepository();
         }
 
         public void AttachView(IView view)
@@ -25,7 +25,7 @@ namespace TriangleApplication
         {
             try
             {
-                triangle = new Triangle(a, b, c);
+                triangles.Add(new Triangle(a, b, c));
             }
             catch (Exception e)
             {
@@ -38,7 +38,7 @@ namespace TriangleApplication
             try
             {
                 double area = Triangle.Area(a, b, c);
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) area is {3}", a, b, c, area));
+                m_view.ShowMessage(String.Format("Triangle ({0},{1},{2}) area is {3}", a, b, c, area));
             }
             catch (Exception e)
             {
@@ -48,10 +48,11 @@ namespace TriangleApplication
 
         public void GetArea()
         {
-            if (triangle != null)
+            if (triangles.Size != 0)
             {
+                Triangle triangle = triangles.Last();
                 double area = triangle.Area();
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) area is {3}", 
+                m_view.ShowMessage(String.Format("Triangle ({0},{1},{2}) area is {3}", 
                                    triangle.A, triangle.B, triangle.C, area));
             }
             else
@@ -67,10 +68,12 @@ namespace TriangleApplication
 
         public void IncrementTriangle()
         {
-            if (triangle != null)
+            if (triangles.Size != 0)
             {
+                Triangle triangle = triangles.Last();
                 triangle++;
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2})", triangle.A, triangle.B, triangle.C));
+                m_view.ShowMessage(String.Format("Triangle ({0},{1},{2})", triangle.A, triangle.B, triangle.C));
+                triangles.Replace(triangles.Size - 1, triangle);
             }
             else
             {
@@ -82,10 +85,12 @@ namespace TriangleApplication
         {
             try
             {
-                if (triangle != null)
+                if (triangles.Size != 0)
                 {
+                    Triangle triangle = triangles.Last();
                     triangle--;
-                    m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2})", triangle.A, triangle.B, triangle.C));
+                    m_view.ShowMessage(String.Format("Triangle ({0},{1},{2})", triangle.A, triangle.B, triangle.C));
+                    triangles.Replace(triangles.Size - 1, triangle);
                 }
                 else
                     m_view.ShowMessage("Triangle not create yet. Press Add triangle at first");                    
@@ -98,10 +103,11 @@ namespace TriangleApplication
 
         public void CastTriangleToDouble()
         {
-            if (triangle != null)
+            if (triangles.Size != 0)
             {
+                Triangle triangle = triangles.Last();
                 double value = (double)triangle;
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) to double is {3}", 
+                m_view.ShowMessage(String.Format("Triangle ({0},{1},{2}) to double is {3}", 
                                    triangle.A, triangle.B, triangle.C, value));
             }
             else
@@ -112,10 +118,11 @@ namespace TriangleApplication
 
         public void CastTriangleToBool()
         {
-            if (triangle != null)
+            if (triangles.Size != 0)
             {
+                Triangle triangle = triangles.Last();
                 bool value = triangle;
-                m_view.ShowMessage(String.Format("Triangle ({0}, {1}, {2}) to bool is {3}", 
+                m_view.ShowMessage(String.Format("Triangle ({0},{1},{2}) to bool is {3}", 
                                    triangle.A, triangle.B, triangle.C, value));
             }
             else
