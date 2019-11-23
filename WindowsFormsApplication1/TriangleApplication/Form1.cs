@@ -19,6 +19,25 @@ namespace TriangleApplication
             InitializeComponent();
             presenter = new Presenter();
             presenter.AttachView(this);
+
+            MyList<int> list = new MyList<int>();
+            list.Add(2);
+            list.Add(6);
+            list.Add(9);
+
+            outputTextBox.AppendText(list.ToString() + "\n");
+
+            list.Insert(2, 17);
+            outputTextBox.AppendText(list.ToString() + "\n");
+
+            list.Remove(6);
+            outputTextBox.AppendText(list.ToString() + "\n");
+
+            list.Insert(3, 4);
+            outputTextBox.AppendText(list.ToString() + "\n");
+
+            foreach(int val in list)
+                outputTextBox.AppendText(val.ToString() + "\n");
         }
 
         public void ShowMessage(string message)

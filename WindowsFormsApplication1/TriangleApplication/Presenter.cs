@@ -9,11 +9,11 @@ namespace TriangleApplication
     class Presenter
     {
         IView m_view;
-        TriangleRepository triangles;
+        MyList<Triangle> triangles;
 
         public Presenter()
         {
-            triangles = new TriangleRepository();
+            triangles = new MyList<Triangle>();
         }
 
         public void AttachView(IView view)
@@ -48,7 +48,7 @@ namespace TriangleApplication
 
         public void GetArea()
         {
-            if (triangles.Size != 0)
+            if (triangles.Count != 0)
             {
                 Triangle triangle = triangles.Last();
                 double area = triangle.Area();
@@ -68,12 +68,12 @@ namespace TriangleApplication
 
         public void IncrementTriangle()
         {
-            if (triangles.Size != 0)
+            if (triangles.Count != 0)
             {
                 Triangle triangle = triangles.Last();
                 triangle++;
                 m_view.ShowMessage(String.Format("Triangle ({0},{1},{2})", triangle.A, triangle.B, triangle.C));
-                triangles.Replace(triangles.Size - 1, triangle);
+                //triangles.Replace(triangles.Count - 1, triangle);
             }
             else
             {
@@ -85,12 +85,12 @@ namespace TriangleApplication
         {
             try
             {
-                if (triangles.Size != 0)
+                if (triangles.Count != 0)
                 {
                     Triangle triangle = triangles.Last();
                     triangle--;
                     m_view.ShowMessage(String.Format("Triangle ({0},{1},{2})", triangle.A, triangle.B, triangle.C));
-                    triangles.Replace(triangles.Size - 1, triangle);
+                    //triangles.Replace(triangles.Count - 1, triangle);
                 }
                 else
                     m_view.ShowMessage("Triangle not create yet. Press Add triangle at first");                    
@@ -103,7 +103,7 @@ namespace TriangleApplication
 
         public void CastTriangleToDouble()
         {
-            if (triangles.Size != 0)
+            if (triangles.Count != 0)
             {
                 Triangle triangle = triangles.Last();
                 double value = (double)triangle;
@@ -118,7 +118,7 @@ namespace TriangleApplication
 
         public void CastTriangleToBool()
         {
-            if (triangles.Size != 0)
+            if (triangles.Count != 0)
             {
                 Triangle triangle = triangles.Last();
                 bool value = triangle;
